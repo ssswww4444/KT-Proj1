@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.27)  23 AUG 2018 11:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.27)  24 AUG 2018 10:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -29,7 +29,11 @@ derived from
 ACL-COLING 1998 Proceedings style -- March 31st 1998
 
 \titlebox=\skip43
-) (./myreport.aux)
+) (./myreport.aux
+
+LaTeX Warning: Label `table1' multiply defined.
+
+)
 \openout1 = `myreport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -59,20 +63,23 @@ No file myreport.bbl.
 
 
 ]
-(./myreport.aux) ) 
+(./myreport.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
  257 strings out of 492649
  2767 string characters out of 6129622
- 65344 words of memory out of 5000000
+ 66344 words of memory out of 5000000
  4211 multiletter control sequences out of 15000+600000
  8512 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  22i,9n,19p,274b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr10.pfb>
-Output written on myreport.pdf (1 page, 50851 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on myreport.pdf (1 page, 51530 bytes).
 PDF statistics:
  20 PDF objects out of 1000 (max. 8388607)
  13 compressed objects within 1 object stream
