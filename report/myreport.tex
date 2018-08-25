@@ -2,17 +2,12 @@
 \usepackage{colacl}
 \sloppy
 
-
-
 \title{Waht kinda typoz do poeple mak?}
 \author
 {Anonymous}
 
-
-
 \begin{document}
 \maketitle
-
 
 \section{Introduction}
 
@@ -27,18 +22,18 @@
 \begin{tabular}{| l | l | l |}
 
       \hline
-      Evaluation Metric & 30\% & 100\% \\
+      Evaluation Metric & 20\% & 100\% \\
       \hline\hline
-      Precision & NA & 0.2604 \\
-      Recall & NA & 0.7905 \\
+      Precision & 0.2700 & 0.2604 \\
+      Recall & 0.7899 & 0.7905 \\
       \hline
 
 \end{tabular}
-\caption{Compare 30\% and 100\% of dataset}\label{table1}
+\caption{Compare 20\% and 100\% of dataset}\label{table1}
  \end{center}
 \end{table}
 
-According to the evaluation metrics of the baseline algorithm shown above, there is no much difference between 30\% and 100\% of the dataset. Therefore, only 30\% random selected tokens of the dataset (1335 tokens) will be used for the rest of the algorithms.
+According to the evaluation metrics of the baseline algorithm shown above (results to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms.
 
 \subsection{Previous Work}
 
@@ -48,12 +43,13 @@ Text.
 
 \section{Method}
 
+\subsection{Levenshtein Distance (Baseline)}
+
+\paragraph{} Levenshtein distance between the misspelled words and the dictionary entries are used as the baseline method for comparison.
 
 \subsection{Global Edit Distance (GED)}
 
 \subsubsection{Parameters}
-
-Levenshtein Distance.
 
 \begin{table}[h]
  \begin{center}
@@ -77,13 +73,13 @@ Levenshtein Distance.
 
 
  
-\subsection{Soundex}
+\subsection{N-Gram Distance}
 
 \section{Evaluation}
 
-\paragraph{} In this report, the algorithms applied will give multiple predictions for each misspelled word, therefore, precision and recall should be used as the evaluation metrics.
+\paragraph{} In this report, the algorithms applied will give multiple predictions for each misspelled word, therefore, precision and recall will be used as the evaluation metrics.
 
-In order to compare between the baseline and advanced algorithms, precision and recall can be combined into a single evaluation metric, called F-Score, which is the harmonic mean of precision and recall. [citation]
+In order to compare between the baseline and advanced algorithms, precision and recall can be combined into a single evaluation metric called F-Score, which is the harmonic mean of precision and recall. [citation]
 
 \section{Discussion}
 
