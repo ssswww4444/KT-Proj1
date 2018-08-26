@@ -15,7 +15,7 @@
 
 \subsection{Dataset}
 
-\paragraph{} The dataset used in this report involves 4453 common misspelling errors made by the editors of Wikipedia, and their corresponding truly intended spellings.
+\paragraph{} The dataset used in this report involves 4453 common misspelling errors made by the editors of Wikipedia\cite{WikiMisspell}, and their corresponding truly intended spellings.
 
 \begin{table}[h]
  \begin{center}
@@ -33,55 +33,114 @@
  \end{center}
 \end{table}
 
-According to the evaluation metrics of the baseline algorithm shown above (results to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms.
+According to the evaluation metrics of the baseline algorithm shown above (results rounded to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms.
 
-\subsection{Previous Work}
+\subsection{Evaluation Metrics}
+
+\paragraph{} In this report, the algorithms applied will give multiple predictions for each misspelled word, therefore, precision and recall will be used as the evaluation metrics.
+
+In order to compare between the baseline and advanced algorithms, precision and recall can be combined into a single evaluation metric called F-Score, which is the harmonic mean of precision and recall.\cite{InfromationRetrieval}
+
+$$ 
+F_1  = \frac{2}{\frac{1}{recall} + \frac{1}{precision}}
+$$
 
 \section{Hypothesis}
 
-Text.
+\paragraph{} The possible types of typographical error could be: 
+
+\begin{enumerate}
+\item
+Transposition of two adjacent characters
+
+\item
+Substitution of a truly intended character to a wrong character
+
+\item
+Duplication of characters
+\end{enumerate}
+
+This paper will only focus on the three types of typographical errors listed above, which could be tested with Damerau–Levenshtein Distance, Weighted–Levenshtein Distance, and N-Gram Distance respectively.
 
 \section{Method}
 
-\subsection{Levenshtein Distance (Baseline)}
+\subsection{Levenshtein Distance (LD)}
+\paragraph{} The Levenshtein Distance (LD) gives the Global Edit Distance (GED) between the misspelled words and the dictionary entries with parameter (m,i,d,r) = (0,1,1,1). 
 
-\paragraph{} Levenshtein distance between the misspelled words and the dictionary entries are used as the baseline method for comparison.
-
-\subsection{Global Edit Distance (GED)}
-
-\subsubsection{Parameters}
+This method is used as a baseline method. The comparisons of the results between this baseline algorithm and the other algorithms indicate the presence or absence of the corresponding types of typographical errors.
 
 \begin{table}[h]
  \begin{center}
 \begin{tabular}{| l | l |}
 
       \hline
-      Evaluation Metric & Levenshtein \\
+      Evaluation Metric & LD \\
       \hline\hline
-      Precision & 0.2604 \\
-      Recall & 0.7905 \\
-      F-Score & 0.3918 \\
+      Precision & 0.2700 \\
+      Recall & 0.7899 \\
+      F-Score & 0.4024 \\
       \hline
 
 \end{tabular}
-\caption{Compare 30\% and 100\% of dataset}\label{table1}
+\caption{Evaluation of Levenshtein Distance}\label{table2}
  \end{center}
 \end{table}
+
+
+\subsection{Damerau–Levenshtein Distance (DLD)}
+
+\paragraph{} Damerau–Levenshtein Distance (DLD) is very similar to LD, but it also takes the transposition of two adjacent characters into account, and treat transposition as an operation with cost 1.
+
+This additional character operation allows the DLD algorithm to give the misspelled tokens with transposition error a lower distance. \textbf{(Add more here.....)}
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{| l | l |}
+
+      \hline
+      Evaluation Metric & DLD \\
+      \hline\hline
+      Precision & 0.3422 \\
+      Recall & 0.8551 \\
+      F-Score & 0.4888 \\
+      \hline
+
+\end{tabular}
+\caption{Evaluation of Damerau-Levenshtein Distance}\label{table3}
+ \end{center}
+\end{table}
+
+\subsection{Weighted–Levenshtein Distance (WLD)}
+Weighted-Levenshtein 
+
+\subsubsection{Parameters}
 
 \subsubsection{Implementation}
 
 
 
  
-\subsection{N-Gram Distance}
-
-\section{Evaluation}
-
-\paragraph{} In this report, the algorithms applied will give multiple predictions for each misspelled word, therefore, precision and recall will be used as the evaluation metrics.
-
-In order to compare between the baseline and advanced algorithms, precision and recall can be combined into a single evaluation metric called F-Score, which is the harmonic mean of precision and recall. [citation]
+\subsection{N-Gram}
 
 \section{Discussion}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{| l | l |}
+
+      \hline
+      Method & F-Score \\
+      \hline\hline
+      LD & 0.4024 \\
+      DLD & 0.4888 \\
+      WLD & 0 \\
+      N-Gram &  0 \\
+      \hline
+\end{tabular}
+
+\caption{Comparing LD with other methods}\label{table4}
+\end{center}
+\end{table}
 
 
 \section{Conclusion}
