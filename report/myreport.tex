@@ -11,7 +11,11 @@
 
 \section{Introduction}
 
-\paragraph{} The goal of this report is to determine what kind of typographical errors people make. In this report, one baseline algorithm and two advanced algorithms will be implemented for comparisons and evaluations.
+\paragraph{} 
+
+Most of the recent spelling correction systems are based on Winnow algorithm (Machine Learning), probability scoring (Bayesian), Neural Networks, Levenshtein Edit Distance, etc. 
+
+The goal of this report is to determine what kind of typographical errors people make. In this report, one baseline algorithm and two advanced algorithms will be implemented for comparisons and evaluations.
 
 \subsection{Dataset}
 
@@ -33,7 +37,9 @@
  \end{center}
 \end{table}
 
-According to the evaluation metrics of the baseline algorithm shown above (results rounded to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms.
+According to the evaluation metrics of the baseline algorithm shown above (results are rounded to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms.
+
+All the tokens in the dataset and words in the dictionary are lower-cased, therefore, no preprocessing is required for the spelling correction.
 
 \subsection{Evaluation Metrics}
 
@@ -91,7 +97,7 @@ This method is used as a baseline method. The comparisons of the results between
 
 \paragraph{} Damerau–Levenshtein Distance (DLD) is very similar to LD, but it also takes the transposition of two adjacent characters into account, and treat transposition as an operation with cost 1.
 
-This additional character operation allows the DLD algorithm to give the misspelled tokens with transposition error a lower distance. \textbf{(Add more here.....)}
+This additional character operation allows the DLD algorithm to give the misspelled tokens with transposition error a lower distance to truly intended word in the dictionary.
 
 \begin{table}[h]
  \begin{center}
@@ -111,16 +117,64 @@ This additional character operation allows the DLD algorithm to give the misspel
 \end{table}
 
 \subsection{Weighted–Levenshtein Distance (WLD)}
-Weighted-Levenshtein 
+
+\paragraph{} Weighted-Levenshtein is another type of Levenshtein Edit Distance (or Global Edit Distance) which allows us to modify the replace cost for a particular character to another character (default cost = 1).
 
 \subsubsection{Parameters}
 
+\paragraph{} By analysing the dataset, the most common substitutions are shown at the table below.
+
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{| l | l | l |}
+
+      \hline
+      Wrong Char & True Char & Frequency \\
+      \hline\hline
+	 a & e & 231 \\     
+	 e & a & 185 \\
+      i & e & 129 \\
+      e & i & 127 \\
+      a & i & 125 \\
+      e & o & 83 \\
+      i & a & 73 \\
+      \hline
+
+\end{tabular}
+\caption{Substitution frequency in Wikipedia dataset (show frequency greter than 70 only)}\label{table4}
+ \end{center}
+\end{table}
+
 \subsubsection{Implementation}
 
+\paragraph{} For the implementation, the replace cost of the top 5 frequent: (a,e), (e,a), (i,e), (e,i), (a,i), were setted to 0.5, while the cost of others were remained at 1.
 
+\begin{table}[h]
+ \begin{center}
+\begin{tabular}{| l | l |}
 
- 
+      \hline
+      Evaluation Metric & WLD \\
+      \hline\hline
+      Precision & 0.3168 \\
+      Recall & 0.7618 \\
+      F-Score & 0.4475 \\
+      \hline
+
+\end{tabular}
+\caption{Evaluation of Weighted-Levenshtein Distance}\label{table5}
+ \end{center}
+\end{table}
+
 \subsection{N-Gram}
+
+\paragraph{} The N-Gram distance is also known as Q-Gram distance, the distance between n-grams of string \textit{s} and \textit{t} can be calculated by the following equation:
+$$
+	|G_n(s)|+ |G_n(t)| - |G_n(s) \cap G_n(t)|
+$$
+where $G_n(s)$ and $G_n(t)$ are the n-grams of string \textit{s} and \textit{t} respectively.
+
+The bigram (N=2) method could be useful for the spelling correction, according to the hypothesis: ``Duplication of characters", 
 
 \begin{table}[h]
  \begin{center}
@@ -150,7 +204,7 @@ Weighted-Levenshtein
       \hline\hline
       LD & 0.4024 \\
       DLD & 0.4888 \\
-      WLD & 0 \\
+      WLD & 0.4475 \\
       N-Gram &  0.5656 \\
       \hline
 \end{tabular}

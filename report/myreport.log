@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.27)  26 AUG 2018 19:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.27)  31 AUG 2018 09:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -33,6 +33,9 @@ ACL-COLING 1998 Proceedings style -- March 31st 1998
 
 LaTeX Warning: Label `table3' multiply defined.
 
+
+LaTeX Warning: Label `table5' multiply defined.
+
 )
 \openout1 = `myreport.aux'.
 
@@ -55,24 +58,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 10.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 22.
+(Font)              <10.95> on input line 26.
 
-Underfull \hbox (badness 3815) in paragraph at lines 36--37
-[]\OT1/cmr/m/n/10.95 According to the eval-u-a-tion met-rics of
- []
-
-
-Underfull \hbox (badness 1210) in paragraph at lines 36--37
+Underfull \hbox (badness 1210) in paragraph at lines 40--41
 \OT1/cmr/m/n/10.95 rounded to 4 dec-i-mal places), there is no
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 63--64
+Underfull \hbox (badness 1043) in paragraph at lines 69--70
 []\OT1/cmr/m/n/10.95 This pa-per will only fo-cus on the three
  []
 
 
-Underfull \hbox (badness 3312) in paragraph at lines 92--93
+Underfull \hbox (badness 3312) in paragraph at lines 98--99
  \OT1/cmr/m/n/10.95 Dam-erau{Levenshtein Dis-tance (DLD) is
  []
 
@@ -81,6 +79,9 @@ Underfull \hbox (badness 3312) in paragraph at lines 92--93
 
 
 ]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 (./myreport.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 10--16
 \OT1/cmr/m/n/10.95 of com-mon mis-spellings.  In
@@ -96,32 +97,31 @@ Overfull \hbox (0.85205pt too wide) in paragraph at lines 10--16
 \OT1/cmr/m/n/10.95 https://en.wikipedia.org/w/index.php?title= 
  []
 
-) [2
-
-] (./myreport.aux)
+) [2] (./myreport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 267 strings out of 492649
- 2895 string characters out of 6129622
- 68344 words of memory out of 5000000
- 4218 multiletter control sequences out of 15000+600000
+ 268 strings out of 492649
+ 2903 string characters out of 6129622
+ 70344 words of memory out of 5000000
+ 4219 multiletter control sequences out of 15000+600000
  8858 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 22i,9n,19p,311b,225s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 22i,9n,19p,315b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 /usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
 sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on myreport.pdf (2 pages, 93519 bytes).
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on myreport.pdf (2 pages, 104459 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 43 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
