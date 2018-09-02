@@ -1,17 +1,108 @@
-\begin{thebibliography}{}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem[\protect\citename{Rijsbergen}1979]{InfromationRetrieval}
-C.~J.~Van Rijsbergen.
-\newblock 1979.
-\newblock {\em Information Retrieval}.
-\newblock Butterworths, London.
+\datalist[entry]{none/global//global/global}
+  \entry{Mays:1991:CBS:117644.117651}{article}{}
+    \name{author}{3}{}{%
+      {{hash=ME}{%
+         family={Mays},
+         familyi={M\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=DFJ}{%
+         family={Damerau},
+         familyi={D\bibinitperiod},
+         given={Fred\bibnamedelima J.},
+         giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=MRL}{%
+         family={Mercer},
+         familyi={M\bibinitperiod},
+         given={Robert\bibnamedelima L.},
+         giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pergamon Press, Inc.}%
+    }
+    \strng{namehash}{MEDFJMRL1}
+    \strng{fullhash}{MEDFJMRL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1016/0306-4573(91)90066-U
+    \endverb
+    \field{issn}{0306-4573}
+    \field{number}{5}
+    \field{pages}{517\bibrangedash 522}
+    \field{title}{Context Based Spelling Correction}
+    \verb{url}
+    \verb http://dx.doi.org/10.1016/0306-4573(91)90066-U
+    \endverb
+    \field{volume}{27}
+    \list{location}{1}{%
+      {Tarrytown, NY, USA}%
+    }
+    \field{journaltitle}{Inf. Process. Manage.}
+    \field{month}{09}
+    \field{year}{1991}
+  \endentry
 
-\bibitem[\protect\citename{{Wikipedia contributors}}nd]{WikiMisspell}
-{Wikipedia contributors}.
-\newblock n.d.
-\newblock {Wikipedia:Lists} of common misspellings.
-\newblock In {\em Wikipedia, The Free Encyclopedia}.
-\newblock
-  https://en.wikipedia.org/w/index.php?title=\\Wikipedia:Lists\_of\_common\_misspellings\&\\oldid=813410985.
+  \entry{WikiMisspell}{incollection}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={{Wikipedia contributors}},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Wikipedia, The Free Encyclopedia}
+  \field{note}{https://en.wikipedia.org/w/index.php?title=\\Wikipedia:Lists\_of\_common\_misspellings\&\\oldid=813410985}
+    \field{title}{{Wikipedia:Lists} of common misspellings}
+    \field{year}{n.d.}
+  \endentry
 
-\end{thebibliography}
+  \entry{InfromationRetrieval}{book}{}
+    \name{author}{1}{}{%
+      {{hash=RCJV}{%
+         family={Rijsbergen},
+         familyi={R\bibinitperiod},
+         given={C.\bibnamedelima J.\bibnamedelima Van},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  V\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Butterworths}%
+    }
+    \strng{namehash}{RCJV1}
+    \strng{fullhash}{RCJV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Information Retrieval}
+    \list{location}{1}{%
+      {London}%
+    }
+    \field{year}{1979}
+  \endentry
+\enddatalist
+\endinput

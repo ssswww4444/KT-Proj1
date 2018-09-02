@@ -1,6 +1,9 @@
 \documentclass[11pt]{article}
 \usepackage{colacl}
 \sloppy
+\usepackage[backend=bibtex,sorting=none,style=ieee]{biblatex}
+\addbibresource{mybib.bib}
+\usepackage{multirow}
 
 \title{Waht kinda typoz do poeple mak?}
 \author
@@ -13,15 +16,15 @@
 
 \paragraph{} 
 
-Most of the recent spelling correction systems are based on Winnow algorithm (Machine Learning), probability scoring (Bayesian), Neural Networks, Levenshtein Edit Distance, etc. 
+Automatic spelling correction is invented and first implemented by a computer scientist called Warren Teitelman in 20th century, and it is very common function that most editors have. The recent spelling correction systems are mainly based on Winnow algorithm (Machine Learning), probability scoring (Bayesian), Neural Networks, Levenshtein Edit Distance, etc. Some systems can even correct the misspelled tokens based on the context. \cite{Mays:1991:CBS:117644.117651} 
 
-The goal of this report is to determine what kind of typographical errors people make. In this report, one baseline algorithm and two advanced algorithms will be implemented for comparisons and evaluations.
+The goal of this report is to determine what kind of typographical errors people make. In this report, one baseline algorithm and three advanced approximate string matching algorithms will be discussed and used to find different types of typographical errors.
 
 \subsection{Dataset}
 
 \paragraph{} The dataset used in this report involves 4453 common misspelling errors made by the editors of Wikipedia\cite{WikiMisspell}, and their corresponding truly intended spellings.
 
-\begin{table}[h]
+\begin{table}[!htbp]
  \begin{center}
 \begin{tabular}{| l | l | l |}
 
@@ -37,9 +40,9 @@ The goal of this report is to determine what kind of typographical errors people
  \end{center}
 \end{table}
 
-According to the evaluation metrics of the baseline algorithm shown above (results are rounded to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms.
+According to the evaluation metrics of the baseline algorithm shown in Table 1 (results are rounded to 4 decimal places), there is no much difference between 20\% and 100\% of the dataset. Therefore, only 20\% random selected tokens of the dataset (890 tokens) will be used for the rest of the algorithms in the interest of speed.
 
-All the tokens in the dataset and words in the dictionary are lower-cased, therefore, no preprocessing is required for the spelling correction.
+All the tokens in the dataset and words in the dictionary are lower-cased, therefore, no preprocessing is required for the spelling corrections.
 
 \subsection{Evaluation Metrics}
 
@@ -53,29 +56,29 @@ $$
 
 \section{Hypothesis}
 
-\paragraph{} The possible types of typographical error could be: 
+\paragraph{} There might be various kinds of typographical errors in the Wikipedia dataset. However, this paper will only be focusing on three possible types of typographical errors listed below, since finding all of the error types in the dataset will become a clustering task which is much more complex.
 
 \begin{enumerate}
 \item
-Transposition of two adjacent characters
+\textbf{Transposition} of two adjacent characters
 
 \item
-Substitution of a truly intended character to a wrong character
+\textbf{Substitution} of a truly intended character to a wrong character
 
 \item
-Duplication of characters
+\textbf{Duplication} of characters
 \end{enumerate}
 
-This paper will only focus on the three types of typographical errors listed above, which could be tested with Damerau–Levenshtein Distance, Weighted–Levenshtein Distance, and N-Gram Distance respectively.
+These typographical error types could be tested with Damerau–Levenshtein Distance, Weighted–Levenshtein Distance, and N-Gram Distance respectively.
 
 \section{Method}
 
 \subsection{Levenshtein Distance (LD)}
-\paragraph{} The Levenshtein Distance (LD) gives the Global Edit Distance (GED) between the misspelled words and the dictionary entries with parameter (m,i,d,r) = (0,1,1,1). 
+\paragraph{} The Levenshtein Distance (LD) gives the Global Edit Distance (GED) between the misspelled words and the dictionary entries with parameters \textit{(m,i,d,r) = (0,1,1,1)}. 
 
-This method is used as a baseline method. The comparisons of the results between this baseline algorithm and the other algorithms indicate the presence or absence of the corresponding types of typographical errors.
+This method is used as a baseline method in this paper. The comparisons of the results between this baseline algorithm and the other algorithms could indicate the presence or absence of the corresponding types of typographical errors in the dataset. If the advanced algorithms have better results than this baseline algorithm, it is probable that the advanced algorithms have corrected the corresponding errors stated in the hypotheses.
 
-\begin{table}[h]
+\begin{table}[!htbp]
  \begin{center}
 \begin{tabular}{| l | l |}
 
@@ -95,11 +98,11 @@ This method is used as a baseline method. The comparisons of the results between
 
 \subsection{Damerau–Levenshtein Distance (DLD)}
 
-\paragraph{} Damerau–Levenshtein Distance (DLD) is very similar to LD, but it also takes the transposition of two adjacent characters into account, and treat transposition as an operation with cost 1.
+\paragraph{} Damerau–Levenshtein Distance is very similar to LD, but it also takes the transposition of two adjacent characters into account, and treat transposition as an operation with cost 1.
 
 This additional character operation allows the DLD algorithm to give the misspelled tokens with transposition error a lower distance to truly intended word in the dictionary.
 
-\begin{table}[h]
+\begin{table}[!htbp]
  \begin{center}
 \begin{tabular}{| l | l |}
 
@@ -118,13 +121,13 @@ This additional character operation allows the DLD algorithm to give the misspel
 
 \subsection{Weighted–Levenshtein Distance (WLD)}
 
-\paragraph{} Weighted-Levenshtein is another type of Levenshtein Edit Distance (or Global Edit Distance) which allows us to modify the replace cost for a particular character to another character (default cost = 1).
+\paragraph{} Weighted-Levenshtein is another type of Levenshtein Edit Distance (or Global Edit Distance) which allows us to modify the cost of replacing a specific character with another character. This algorithm should be able to correct more ``Substitution" errors in the dataset if the hypothesis is true.
 
 \subsubsection{Parameters}
 
-\paragraph{} By analysing the dataset, the most common substitutions are shown at the table below.
+\paragraph{} By analysing the Wikipedia dataset, the most common substitutions are shown at Table 4.
 
-\begin{table}[h]
+\begin{table}[!htbp]
  \begin{center}
 \begin{tabular}{| l | l | l |}
 
@@ -145,11 +148,11 @@ This additional character operation allows the DLD algorithm to give the misspel
  \end{center}
 \end{table}
 
-\subsubsection{Implementation}
+\subsubsection{Parameters}
 
-\paragraph{} For the implementation, the replace cost of the top 5 frequent: (a,e), (e,a), (i,e), (e,i), (a,i), were setted to 0.5, while the cost of others were remained at 1.
+\paragraph{} For the implementation, the replace cost of the top 5 frequent: \textit{(a,e), (e,a), (i,e), (e,i), (a,i)}, are setted to 0.5, while the cost of others are remained at 1.
 
-\begin{table}[h]
+\begin{table}[!htbp]
  \begin{center}
 \begin{tabular}{| l | l |}
 
@@ -168,15 +171,50 @@ This additional character operation allows the DLD algorithm to give the misspel
 
 \subsection{N-Gram}
 
-\paragraph{} The N-Gram distance is also known as Q-Gram distance, the distance between n-grams of string \textit{s} and \textit{t} can be calculated by the following equation:
+\paragraph{} The N-Gram distance is also known as Q-Gram distance. The distance between n-grams of string \textit{s} and \textit{t} can be calculated by the following equation:
 $$
 	|G_n(s)|+ |G_n(t)| - |G_n(s) \cap G_n(t)|
 $$
 where $G_n(s)$ and $G_n(t)$ are the n-grams of string \textit{s} and \textit{t} respectively.
 
-The bigram (N=2) method could be useful for the spelling correction, according to the hypothesis: ``Duplication of characters", 
+\subsubsection{Principles}
 
-\begin{table}[h]
+\paragraph{} The bigram (N=2) method could be useful for the spelling correction. For the hypothesis: ``Duplication of characters", there could be two typical cases:
+
+\begin{enumerate}
+\item
+The misspelled token has a duplicated character that the truly intended word does not contain, for example:
+
+\begin{center}
+\parbox{6cm}{
+   misspelled: caat \\
+   bigrams: \{\#c, ca, aa, at, t\#\} \\
+   correct: cat \\
+   bigrams: \{\#c, ca, at, t\#\} \\
+   distance = 1 \\
+}
+\end{center}
+
+\item
+The misspelled token ignored the duplicated character that the correct word contains, for example:
+
+\begin{center}
+\parbox{6cm}{
+   misspelled: mis \\
+   bigrams: \{\#m, mi, is, s\#\} \\
+   correct: miss \\
+   bigrams: \{\#m, mi, is, ss, s\#\} \\
+   distance = 1 \\
+}
+\end{center}
+
+\end{enumerate}
+
+For both cases above, the bigram distance between the misspelled token and the truly intended word is 1, which is the minimum distance between two different strings. 
+
+Therefore this algorithm can correct the two types of misspelled tokens demonstrated above. 
+
+\begin{table}[!htbp]
  \begin{center}
 \begin{tabular}{| l | l |}
 
@@ -189,13 +227,17 @@ The bigram (N=2) method could be useful for the spelling correction, according t
       \hline
 
 \end{tabular}
-\caption{Evaluation of Damerau-Levenshtein Distance}\label{table3}
+\caption{Evaluation of N-Gram Distance}\label{table6}
  \end{center}
 \end{table}
 
 \section{Discussion}
 
-\begin{table}[h]
+\subsection{With evaluations}
+
+\paragraph{} By comparing the F-Score's of the advanced algorithms (\textit{DLD, WLD, N-Gram}) with the baseline algorithm (\textit{LD}). It seems that there is some evidence to suggest that the three hypotheses are true, since the F-Score's of the corresponding algorithms are all higher than baseline's.
+
+\begin{table}[!htbp]
 \begin{center}
 \begin{tabular}{| l | l |}
 
@@ -209,16 +251,44 @@ The bigram (N=2) method could be useful for the spelling correction, according t
       \hline
 \end{tabular}
 
-\caption{Comparing LD with other methods}\label{table5}
+\caption{Comparing LD with other methods}\label{table7}
+\end{center}
+\end{table}
+
+\subsection{With examples}
+
+\paragraph{} Besides, the hypotheses could also be supported by the examples in the Wikipedia dataset. A few examples for each type of error are shown below in Table 8.
+
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{| l | l | l |}
+      \hline
+      Misspelled & Correct & Type \\
+      \hline\hline
+      theri & their & \multirow{3}{*}{Transposition} \\
+      wiht & with & \\
+      tlaking & talking & \\
+      \hline
+      chasr & chase & \multirow{3}{*}{Substitution}\\
+      protocal & protocol & \\
+      consept & concept & \\
+      \hline
+      possesing & possessing & \multirow{3}{*}{Duplication} \\
+      committment & commitment & \\
+      mispelled & misspelled & \\
+      \hline
+\end{tabular}
+\caption{Transposition examples}\label{table8}
 \end{center}
 \end{table}
 
 
 \section{Conclusion}
 
-Concluding text.
+\paragraph{} In conclusion, there is strong evidence showing that the dataset might include three types of typographical error: Transposition, Substitution, and Duplication. There might also be many other kinds of typographical errors such as: insertion, deletion, etc., which could be proven by changing the parameters of the GED and evaluating the results.
 
-\bibliographystyle{acl}
-\bibliography{mybib}
+\printbibliography
+
+
 
 \end{document}
